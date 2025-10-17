@@ -22,7 +22,8 @@ class FirebaseAnalyticsAdapter {
     _userProperties[name] = value;
   }
 
-  Future<void> setConsent({bool? adStorageConsentGranted, bool? analyticsStorageConsentGranted}) {
+  Future<void> setConsent(
+      {bool? adStorageConsentGranted, bool? analyticsStorageConsentGranted}) {
     return _firebaseAnalytics.setConsent(
       adStorageConsentGranted: adStorageConsentGranted,
       analyticsStorageConsentGranted: analyticsStorageConsentGranted,
@@ -44,7 +45,7 @@ class FirebaseAnalyticsAdapter {
 
   void logEvent({
     required String name,
-    Map<String, dynamic>? parameters,
+    Map<String, Object>? parameters,
   }) {
     _firebaseAnalytics.logEvent(
       name: name,

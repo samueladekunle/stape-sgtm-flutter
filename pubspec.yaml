@@ -16,7 +16,7 @@ platforms:
   windows:
 
 dependencies:
-  firebase_analytics: ^10.8.7
+  firebase_analytics: ^12.0.3
   flutter:
     sdk: flutter
   http: ^1.2.0
