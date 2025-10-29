@@ -37,11 +37,17 @@ class Stape {
     _client = client;
   }
 
-  Future<dynamic> sendEvent(String eventName, Map<String, dynamic> eventData) async {
-    return sendEventData(eventName, EventData.fromJson(eventData));
+  Future<dynamic> sendEvent(
+      String eventName, Map<String, dynamic> eventData) async {
+    return _sendEventJson(eventName, eventData);
   }
 
   Future<dynamic> sendEventData(String eventName, EventData eventData) async {
+    return _sendEventJson(eventName, eventData.toJson());
+  }
+
+  Future<dynamic> _sendEventJson(
+      String eventName, Map<String, dynamic> event) async {
     try {
       Uri url = Uri.parse('${options.domain}${options.requestPath}');
 
@@ -54,7 +60,7 @@ class Stape {
       );
 
       final postData = {
-        ...eventData.toJson(),
+        ...event,
         'event_name': eventName,
         'v': options.protocolVersion,
       };
@@ -90,11 +96,14 @@ class Stape {
   }
 
   void validateOptions() {
-    if (!options.domain.startsWith('https://') || options.domain.endsWith('/')) {
-      throw StapeException('You did not fill in the variable domain correctly. Example: https://gtm.stape.io');
+    if (!options.domain.startsWith('https://') ||
+        options.domain.endsWith('/')) {
+      throw StapeException(
+          'You did not fill in the variable domain correctly. Example: https://gtm.stape.io');
     }
     if (options.requestPath?.startsWith('/') != true) {
-      throw StapeException('You did not fill in the variable requestPath correctly. Example: /');
+      throw StapeException(
+          'You did not fill in the variable requestPath correctly. Example: /');
     }
   }
 }
