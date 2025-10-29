@@ -17,6 +17,7 @@ class EventData {
   String? userId;
   num? value;
   String? viewportSize;
+  String? ipAddress;
 
   EventData({
     this.clientId,
@@ -35,6 +36,7 @@ class EventData {
     this.userId,
     this.value,
     this.viewportSize,
+    this.ipAddress,
   });
 
   factory EventData.fromJson(Map<String, dynamic> json) => EventData(
@@ -56,6 +58,7 @@ class EventData {
         userId: json['user_id'],
         value: json['value'],
         viewportSize: json['viewport_size'],
+        ipAddress: json['ip_address'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -75,6 +78,7 @@ class EventData {
         'user_id': userId,
         'value': value,
         'viewport_size': viewportSize,
+        'ip_address': ipAddress,
       };
 
   EventData copyWith({
@@ -94,6 +98,7 @@ class EventData {
     String? userId,
     num? value,
     String? viewportSize,
+    String? ipAddress,
   }) {
     return EventData(
       clientId: clientId ?? this.clientId,
@@ -112,6 +117,7 @@ class EventData {
       userId: userId ?? this.userId,
       value: value ?? this.value,
       viewportSize: viewportSize ?? this.viewportSize,
+      ipAddress: ipAddress ?? this.ipAddress,
     );
   }
 }
