@@ -1,6 +1,6 @@
 name: stape_sdk
 description: StapeSDK to use with Stape.io service
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/stape-io/stape-sgtm-flutter
 
 environment:
