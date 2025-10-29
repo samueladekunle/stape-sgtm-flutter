@@ -50,7 +50,9 @@ class EventData {
         pageTitle: json['page_title'],
         screenResolution: json['screen_resolution'],
         userAgent: json['user_agent'],
-        userData: json['user_data'] != null ? UserData.fromJson(json['user_data']) : null,
+        userData: json['user_data'] != null
+            ? UserData.fromJson(json['user_data'])
+            : null,
         userId: json['user_id'],
         value: json['value'],
         viewportSize: json['viewport_size'],
@@ -74,4 +76,42 @@ class EventData {
         'value': value,
         'viewport_size': viewportSize,
       };
+
+  EventData copyWith({
+    String? clientId,
+    String? currency,
+    String? ipOverride,
+    String? language,
+    String? pageEncoding,
+    String? pageHostname,
+    String? pageLocation,
+    String? pagePath,
+    String? pageReferrer,
+    String? pageTitle,
+    String? screenResolution,
+    String? userAgent,
+    UserData? userData,
+    String? userId,
+    num? value,
+    String? viewportSize,
+  }) {
+    return EventData(
+      clientId: clientId ?? this.clientId,
+      currency: currency ?? this.currency,
+      ipOverride: ipOverride ?? this.ipOverride,
+      language: language ?? this.language,
+      pageEncoding: pageEncoding ?? this.pageEncoding,
+      pageHostname: pageHostname ?? this.pageHostname,
+      pageLocation: pageLocation ?? this.pageLocation,
+      pagePath: pagePath ?? this.pagePath,
+      pageReferrer: pageReferrer ?? this.pageReferrer,
+      pageTitle: pageTitle ?? this.pageTitle,
+      screenResolution: screenResolution ?? this.screenResolution,
+      userAgent: userAgent ?? this.userAgent,
+      userData: userData ?? this.userData,
+      userId: userId ?? this.userId,
+      value: value ?? this.value,
+      viewportSize: viewportSize ?? this.viewportSize,
+    );
+  }
 }

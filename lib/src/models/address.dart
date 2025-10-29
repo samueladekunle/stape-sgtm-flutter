@@ -44,4 +44,28 @@ class Address {
         'postal_code': postalCode,
         'country': country,
       };
+
+  Address copyWith({
+    String? firstName,
+    String? sha256FirstName,
+    String? lastName,
+    String? sha256LastName,
+    String? street,
+    String? city,
+    String? region,
+    String? postalCode,
+    String? country,
+  }) {
+    return Address(
+      firstName: firstName ?? this.firstName,
+      sha256FirstName: sha256FirstName ?? this.sha256FirstName,
+      lastName: lastName ?? this.lastName,
+      sha256LastName: sha256LastName ?? this.sha256LastName,
+      street: street ?? this.street,
+      city: city ?? this.city,
+      region: region ?? this.region,
+      postalCode: postalCode ?? this.postalCode,
+      country: country ?? this.country,
+    );
+  }
 }
